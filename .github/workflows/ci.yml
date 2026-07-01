@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show available Xcode versions
+        run: ls /Applications | grep Xcode
+
+      - name: Install xcpretty
+        run: gem install xcpretty --no-document
+
+      - name: Configure API key
+        run: |
+          if [ -n "${{ secrets.CAT_API_KEY }}" ]; then
+            echo "CAT_API_KEY = ${{ secrets.CAT_API_KEY }}" > Config/Secrets.xcconfig
+          else
+            echo "CAT_API_KEY = " > Config/Secrets.xcconfig
+          fi
+
+      - name: Build
+        run: |
+          xcodebuild build \
+            -project Wigilabs.xcodeproj \
+            -scheme Wigilabs \
+            -destination 'generic/platform=iOS Simulator' \
+            | xcpretty && exit ${PIPESTATUS[0]}
+
+      - name: Test
+        run: |
+          xcodebuild test \
+            -project Wigilabs.xcodeproj \
+            -scheme Wigilabs \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+            -resultBundlePath TestResults \
+            | xcpretty && exit ${PIPESTATUS[0]}
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: TestResults.xcresult
