@@ -1,0 +1,13 @@
+# Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+.build/
+.swiftpm/
+
+# macOS
+.DS_Store
+
+# Secrets
+Config/Secrets.xcconfig
+Wigilabs/Core/Config/GeneratedSecrets.swift
