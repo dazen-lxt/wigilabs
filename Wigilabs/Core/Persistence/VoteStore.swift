@@ -13,7 +13,7 @@ protocol VoteStoring {
     func fetchAll() throws -> [VoteRecord]
 }
 
-final class VoteStore: VoteStoring {
+nonisolated final class VoteStore: VoteStoring {
     private let context: ModelContext
 
     init(context: ModelContext) {

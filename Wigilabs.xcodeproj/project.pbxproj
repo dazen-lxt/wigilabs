@@ -6,9 +6,28 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		0CA9A1042FF4E000001A3473 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CA99E712FF4CFF5001A3473 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0CA99E782FF4CFF5001A3473;
+			remoteInfo = Wigilabs;
+		};
+		0CA9A2042FF4E000001A3473 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CA99E712FF4CFF5001A3473 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0CA99E782FF4CFF5001A3473;
+			remoteInfo = Wigilabs;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0CA99E792FF4CFF5001A3473 /* Wigilabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wigilabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA9A0012FF4D000001A3473 /* Config/Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config/Secrets.xcconfig; sourceTree = "<group>"; };
+		0CA9A1002FF4E000001A3473 /* WigilabsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WigilabsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CA9A2002FF4E000001A3473 /* WigilabsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WigilabsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -17,10 +36,34 @@
 			path = Wigilabs;
 			sourceTree = "<group>";
 		};
+		0CA9A1012FF4E000001A3473 /* WigilabsTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WigilabsTests;
+			sourceTree = "<group>";
+		};
+		0CA9A2012FF4E000001A3473 /* WigilabsUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WigilabsUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0CA99E762FF4CFF5001A3473 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CA9A1052FF4E000001A3473 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CA9A2052FF4E000001A3473 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -35,6 +78,8 @@
 			children = (
 				0CA9A0012FF4D000001A3473 /* Config/Secrets.xcconfig */,
 				0CA99E7B2FF4CFF5001A3473 /* Wigilabs */,
+				0CA9A1012FF4E000001A3473 /* WigilabsTests */,
+				0CA9A2012FF4E000001A3473 /* WigilabsUITests */,
 				0CA99E7A2FF4CFF5001A3473 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				0CA99E792FF4CFF5001A3473 /* Wigilabs.app */,
+				0CA9A1002FF4E000001A3473 /* WigilabsTests.xctest */,
+				0CA9A2002FF4E000001A3473 /* WigilabsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +120,52 @@
 			productReference = 0CA99E792FF4CFF5001A3473 /* Wigilabs.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0CA9A1022FF4E000001A3473 /* WigilabsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CA9A1082FF4E000001A3473 /* Build configuration list for PBXNativeTarget "WigilabsTests" */;
+			buildPhases = (
+				0CA9A1062FF4E000001A3473 /* Sources */,
+				0CA9A1052FF4E000001A3473 /* Frameworks */,
+				0CA9A1072FF4E000001A3473 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CA9A1032FF4E000001A3473 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0CA9A1012FF4E000001A3473 /* WigilabsTests */,
+			);
+			name = WigilabsTests;
+			packageProductDependencies = (
+			);
+			productName = WigilabsTests;
+			productReference = 0CA9A1002FF4E000001A3473 /* WigilabsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0CA9A2022FF4E000001A3473 /* WigilabsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CA9A2082FF4E000001A3473 /* Build configuration list for PBXNativeTarget "WigilabsUITests" */;
+			buildPhases = (
+				0CA9A2062FF4E000001A3473 /* Sources */,
+				0CA9A2052FF4E000001A3473 /* Frameworks */,
+				0CA9A2072FF4E000001A3473 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CA9A2032FF4E000001A3473 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0CA9A2012FF4E000001A3473 /* WigilabsUITests */,
+			);
+			name = WigilabsUITests;
+			packageProductDependencies = (
+			);
+			productName = WigilabsUITests;
+			productReference = 0CA9A2002FF4E000001A3473 /* WigilabsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -85,6 +178,14 @@
 				TargetAttributes = {
 					0CA99E782FF4CFF5001A3473 = {
 						CreatedOnToolsVersion = 26.3;
+					};
+					0CA9A1022FF4E000001A3473 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = 0CA99E782FF4CFF5001A3473;
+					};
+					0CA9A2022FF4E000001A3473 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = 0CA99E782FF4CFF5001A3473;
 					};
 				};
 			};
@@ -103,12 +204,28 @@
 			projectRoot = "";
 			targets = (
 				0CA99E782FF4CFF5001A3473 /* Wigilabs */,
+				0CA9A1022FF4E000001A3473 /* WigilabsTests */,
+				0CA9A2022FF4E000001A3473 /* WigilabsUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0CA99E772FF4CFF5001A3473 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CA9A1072FF4E000001A3473 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CA9A2072FF4E000001A3473 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -148,7 +265,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0CA9A1062FF4E000001A3473 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CA9A2062FF4E000001A3473 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0CA9A1032FF4E000001A3473 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0CA99E782FF4CFF5001A3473 /* Wigilabs */;
+			targetProxy = 0CA9A1042FF4E000001A3473 /* PBXContainerItemProxy */;
+		};
+		0CA9A2032FF4E000001A3473 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0CA99E782FF4CFF5001A3473 /* Wigilabs */;
+			targetProxy = 0CA9A2042FF4E000001A3473 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0CA99E822FF4CFF7001A3473 /* Debug */ = {
@@ -351,6 +495,84 @@
 			};
 			name = Release;
 		};
+		0CA9A1092FF4E000001A3473 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dazen.WigilabsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wigilabs.app/Wigilabs";
+			};
+			name = Debug;
+		};
+		0CA9A10A2FF4E000001A3473 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dazen.WigilabsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wigilabs.app/Wigilabs";
+			};
+			name = Release;
+		};
+		0CA9A2092FF4E000001A3473 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dazen.WigilabsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Wigilabs;
+			};
+			name = Debug;
+		};
+		0CA9A20A2FF4E000001A3473 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dazen.WigilabsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Wigilabs;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -368,6 +590,24 @@
 			buildConfigurations = (
 				0CA99E852FF4CFF7001A3473 /* Debug */,
 				0CA99E862FF4CFF7001A3473 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0CA9A1082FF4E000001A3473 /* Build configuration list for PBXNativeTarget "WigilabsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CA9A1092FF4E000001A3473 /* Debug */,
+				0CA9A10A2FF4E000001A3473 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0CA9A2082FF4E000001A3473 /* Build configuration list for PBXNativeTarget "WigilabsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CA9A2092FF4E000001A3473 /* Debug */,
+				0CA9A20A2FF4E000001A3473 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
