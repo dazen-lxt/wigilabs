@@ -10,4 +10,3 @@ DerivedData/
 
 # Secrets
 Config/Secrets.xcconfig
-Wigilabs/Core/Config/GeneratedSecrets.swift

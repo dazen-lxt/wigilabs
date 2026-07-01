@@ -11,7 +11,10 @@ enum AppConfig {
     static let baseURL = URL(string: "https://api.thecatapi.com/v1")!
 
     static var apiKey: String? {
-        let trimmed = GeneratedSecrets.catAPIKey.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let key = Bundle.main.object(forInfoDictionaryKey: "CAT_API_KEY") as? String else {
+            return nil
+        }
+        let trimmed = key.trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmed.isEmpty ? nil : trimmed
     }
 }
