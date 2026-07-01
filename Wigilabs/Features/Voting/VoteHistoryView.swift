@@ -29,7 +29,11 @@ struct VoteHistoryView: View {
                 )
             } else {
                 List(votes) { vote in
-                    VoteHistoryRow(vote: vote, dateFormatter: Self.dateFormatter)
+                    NavigationLink {
+                        VoteRecordDetailView(vote: vote)
+                    } label: {
+                        VoteHistoryRow(vote: vote, dateFormatter: Self.dateFormatter)
+                    }
                 }
             }
         }
@@ -60,5 +64,32 @@ private struct VoteHistoryRow: View {
                 .foregroundStyle(vote.voteType == .like ? .green : .red)
         }
         .padding(.vertical, 4)
+    }
+}
+
+private struct VoteRecordDetailView: View {
+    let vote: VoteRecord
+    @State private var catImage: CatImage?
+    @State private var errorMessage: String?
+
+    var body: some View {
+        Group {
+            if let catImage {
+                CatDetailView(catImage: catImage)
+            } else if let errorMessage {
+                Text(errorMessage)
+                    .foregroundStyle(.secondary)
+                    .padding()
+            } else {
+                ProgressView()
+            }
+        }
+        .task {
+            do {
+                catImage = try await CatAPIService().fetchImage(id: vote.imageId)
+            } catch {
+                errorMessage = String(localized: "history.detail.error", defaultValue: "No se pudo cargar el detalle de este gato.")
+            }
+        }
     }
 }

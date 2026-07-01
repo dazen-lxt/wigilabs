@@ -81,6 +81,16 @@
         }
       }
     },
+    "history.detail.error" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo cargar el detalle de este gato."
+          }
+        }
+      }
+    },
     "history.empty.description" : {
       "localizations" : {
         "es" : {

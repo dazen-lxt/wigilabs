@@ -18,23 +18,7 @@ final class VotingViewModelTests: XCTestCase {
         CatImage(id: id, url: "https://example.com/\(id).jpg", width: 100, height: 100, breeds: nil)
     }
 
-    func testLoadBreedsIfNeededLoadsFirstBreedAndImage() async throws {
-        let repository = FakeVotingRepository()
-        let breed = makeBreed(id: "abys", imageId: "img1")
-        repository.breeds = [breed]
-        repository.imagesByBreedId = ["abys": makeImage(id: "img1")]
-
-        let viewModel = VotingViewModel(repository: repository)
-        viewModel.loadBreedsIfNeeded()
-        try await Task.sleep(nanoseconds: 200_000_000)
-
-        XCTAssertEqual(viewModel.currentBreed?.id, "abys")
-        XCTAssertEqual(viewModel.currentImage?.id, "img1")
-        XCTAssertNil(viewModel.errorMessage)
-        XCTAssertFalse(viewModel.isLoading)
-    }
-
-    func testVoteRecordsVoteAndAdvancesToNextBreed() async throws {
+    func testLoadIfNeededFillsDeckWithCurrentAndNextCard() async throws {
         let repository = FakeVotingRepository()
         let breedA = makeBreed(id: "abys", imageId: "img1")
         let breedB = makeBreed(id: "beng", imageId: "img2")
@@ -45,17 +29,41 @@ final class VotingViewModelTests: XCTestCase {
         ]
 
         let viewModel = VotingViewModel(repository: repository)
-        viewModel.loadBreedsIfNeeded()
+        viewModel.loadIfNeeded()
         try await Task.sleep(nanoseconds: 200_000_000)
 
-        let votedBreedId = try XCTUnwrap(viewModel.currentBreed?.id)
+        XCTAssertNotNil(viewModel.currentCard)
+        XCTAssertNotNil(viewModel.nextCard)
+        XCTAssertNil(viewModel.errorMessage)
+        XCTAssertFalse(viewModel.isLoading)
+    }
+
+    func testVoteRecordsVoteAndAdvancesToNextCard() async throws {
+        let repository = FakeVotingRepository()
+        let breedA = makeBreed(id: "abys", imageId: "img1")
+        let breedB = makeBreed(id: "beng", imageId: "img2")
+        repository.breeds = [breedA, breedB]
+        repository.imagesByBreedId = [
+            "abys": makeImage(id: "img1"),
+            "beng": makeImage(id: "img2"),
+        ]
+
+        let viewModel = VotingViewModel(repository: repository)
+        viewModel.loadIfNeeded()
+        try await Task.sleep(nanoseconds: 200_000_000)
+
+        let votedBreedId = try XCTUnwrap(viewModel.currentCard?.breed.id)
+        let upcomingBreedId = viewModel.nextCard?.breed.id
         viewModel.vote(.like)
         try await Task.sleep(nanoseconds: 200_000_000)
 
         XCTAssertEqual(repository.recordedVotes.count, 1)
         XCTAssertEqual(repository.recordedVotes.first?.type, .like)
         XCTAssertEqual(repository.recordedVotes.first?.breed.id, votedBreedId)
-        XCTAssertNotNil(viewModel.currentBreed)
+        XCTAssertNotNil(viewModel.currentCard)
+        if let upcomingBreedId {
+            XCTAssertEqual(viewModel.currentCard?.breed.id, upcomingBreedId)
+        }
     }
 
     func testErrorMessageSetWhenBreedsFetchFails() async throws {
@@ -63,11 +71,11 @@ final class VotingViewModelTests: XCTestCase {
         repository.breedsError = NetworkError.requestFailed(500)
 
         let viewModel = VotingViewModel(repository: repository)
-        viewModel.loadBreedsIfNeeded()
+        viewModel.loadIfNeeded()
         try await Task.sleep(nanoseconds: 200_000_000)
 
         XCTAssertNotNil(viewModel.errorMessage)
-        XCTAssertNil(viewModel.currentBreed)
+        XCTAssertNil(viewModel.currentCard)
     }
 
     func testRetryAfterBreedsFailureRecoversOnNextAttempt() async throws {
@@ -75,7 +83,7 @@ final class VotingViewModelTests: XCTestCase {
         repository.breedsError = NetworkError.requestFailed(500)
 
         let viewModel = VotingViewModel(repository: repository)
-        viewModel.loadBreedsIfNeeded()
+        viewModel.loadIfNeeded()
         try await Task.sleep(nanoseconds: 200_000_000)
         XCTAssertNotNil(viewModel.errorMessage)
 
@@ -86,6 +94,6 @@ final class VotingViewModelTests: XCTestCase {
         try await Task.sleep(nanoseconds: 200_000_000)
 
         XCTAssertNil(viewModel.errorMessage)
-        XCTAssertEqual(viewModel.currentBreed?.id, "abys")
+        XCTAssertEqual(viewModel.currentCard?.breed.id, "abys")
     }
 }
